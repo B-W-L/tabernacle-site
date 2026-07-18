@@ -17,6 +17,7 @@
   --blue-light: #6f92e8;
   --gold: #d4af60;
   --nav-bg: rgba(6, 13, 31, 0.4);
+  --pillar-overlay-rgb: 6, 13, 31; /* teinte du voile sur les cartes photo : bleu marine en thème sombre */
 
   --font-title: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
@@ -36,18 +37,26 @@ body[data-theme="light"] {
   --blue-light: #2b52c4;
   --gold: #b8863f;
   --nav-bg: rgba(245, 247, 252, 0.4);
-  --on-dark-text: #dcdfe8; /* remplace le blanc pur pour les textes sur fond sombre/bleu en thème clair */
+  --on-dark-text: #dcdfe8; /* remplace le blanc pur pour les textes sur fond bleu (boutons) en thème clair */
+  --pillar-overlay-rgb: 255, 255, 255; /* teinte du voile sur les cartes photo : blanc en thème clair */
 }
 
-/* En thème clair, les textes autrefois blancs (sur boutons bleus ou cartes-photo assombries)
-   deviennent gris clair plutôt que blanc pur. */
-body[data-theme="light"] .btn-primary,
-body[data-theme="light"] .pillar-card h3 {
+/* En thème clair, le texte des boutons bleus devient gris clair plutôt que blanc pur. */
+body[data-theme="light"] .btn-primary {
   color: var(--on-dark-text);
+}
+
+/* En thème clair, le voile des cartes "Notre vision / Notre mission / Nos valeurs" devient blanc
+   (au lieu de bleu marine) : le texte doit donc passer en gris FONCÉ pour rester lisible. */
+body[data-theme="light"] .pillar-card h3 {
+  color: #363b48;
 }
 body[data-theme="light"] .pillar-card p,
 body[data-theme="light"] .pillar-card li {
-  color: rgba(220, 223, 232, 0.88);
+  color: rgba(54, 59, 72, 0.85);
+}
+body[data-theme="light"] .pillar-card > * {
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.6);
 }
 
 /* ===========================
@@ -310,8 +319,12 @@ body[data-theme="light"] .hero-overlay {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(6, 13, 31, 0.18) 0%, rgba(6, 13, 31, 0.32) 55%, rgba(6, 13, 31, 0.55) 100%);
+  background: linear-gradient(180deg,
+    rgba(var(--pillar-overlay-rgb), 0.18) 0%,
+    rgba(var(--pillar-overlay-rgb), 0.32) 55%,
+    rgba(var(--pillar-overlay-rgb), 0.55) 100%);
   z-index: 1;
+  transition: background 0.4s ease;
 }
 .pillar-card > * {
   position: relative;
