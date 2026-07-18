@@ -503,13 +503,25 @@ body[data-theme="light"] .hero-overlay {
     gap: 1.2rem;
     border-bottom: 1px solid var(--card-border);
   }
-  .gallery-grid, .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid, .schedule-single { grid-template-columns: 1fr; }
   .schedule-single { flex-direction: column; text-align: center; }
+
+  /* Le logo déborde du bandeau exprès (voir .logo-img) : sur écran plus
+     étroit on réduit sa hauteur pour qu'il n'écrase pas le reste du header. */
+  .navbar { height: 68px; }
+  .logo-img { height: 96px; }
 }
 
 @media (max-width: 600px) {
-  .gallery-grid, .footer-grid { grid-template-columns: 1fr; }
+  /* La galerie reste toujours en grille (jamais en liste qui défile
+     photo par photo) — elle se réduit juste en 2 colonnes. */
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
+  .footer-grid { grid-template-columns: 1fr; }
+
+  .navbar { height: 54px; }
+  .logo-img { height: 68px; }
 }
 
 /* Les cartes "Notre vision / mission / valeurs" et la section Pasteur
