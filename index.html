@@ -8,6 +8,12 @@
   <meta name="author" content="BWL Diffusion">
   <link rel="stylesheet" href="style.css">
 
+  <!-- Icône affichée dans l'onglet du navigateur (logo de l'église) -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+
   <!-- ===== STATISTIQUES DE VISITE (Google Analytics) =====
        Les statistiques (nombre de visiteurs, pages vues...) apparaissent
        sur analytics.google.com, visibles par vous seul. Ça ne fonctionne
@@ -35,7 +41,7 @@
         <li><a href="#apropos">À propos</a></li>
         <li><a href="#pasteur">Pasteur</a></li>
         <li><a href="#culte">Culte</a></li>
-        <li><a href="#photos-culte">Galerie</a></li>
+        <li><a href="#galerie">Galerie</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
@@ -159,13 +165,21 @@
 </div>
   </section>
 
-  <!-- ===== 5. PHOTOS DES CULTES ===== -->
-  <section id="photos-culte" class="section section-alt">
-    <p class="eyebrow">Nos cultes</p>
-    <h2>Des moments d'adoration <span class="accent">en images</span></h2>
-    <p class="section-intro">Quelques instants captés durant nos cultes du dimanche.</p>
+  <!-- ===== 5. GALERIE (cultes + vie d'église) ===== -->
+  <section id="galerie" class="section section-alt">
+    <p class="eyebrow">Galerie</p>
+    <h2>Des instants précieux, des <span class="accent">souvenirs éternels</span></h2>
+    <p class="section-intro">Quelques moments captés durant nos temps de prière, nos cultes du dimanche et notre vie d'église et de communion fraternelle.</p>
 
-    <div class="gallery-grid">
+    <h3 class="prayer-title">Moments de prière</h3>
+    <div class="gallery-grid prayer-grid">
+      <img src="priere.jpg" alt="Moment de prière">
+      <img src="priere0.jpg" alt="Moment de prière">
+      <img src="priere1.jpg" alt="Moment de prière">
+    </div>
+
+    <h3 class="prayer-title">Moments de culte et de vie d'église</h3>
+    <div class="gallery-grid" id="galleryGrid">
       <img src="culte-dimanche.jpg" alt="Culte du dimanche">
       <img src="culte-dimanche0.jpg" alt="Culte du dimanche">
       <img src="culte-dimanche1.jpg" alt="Culte du dimanche">
@@ -178,23 +192,6 @@
       <img src="culte-dimanche8.jpg" alt="Culte du dimanche">
       <img src="culte-dimanche9.jpg" alt="Culte du dimanche">
       <img src="culte-dimanche10.jpg" alt="Culte du dimanche">
-    </div>
-
-    <h3 class="prayer-title">Moments de prière</h3>
-    <div class="gallery-grid prayer-grid">
-      <img src="priere.jpg" alt="Moment de prière">
-      <img src="priere0.jpg" alt="Moment de prière">
-      <img src="priere1.jpg" alt="Moment de prière">
-    </div>
-  </section>
-
-  <!-- ===== 6. GALERIE ===== -->
-  <section id="galerie" class="section">
-    <p class="eyebrow">Galerie</p>
-    <h2>Des instants précieux, des <span class="accent">souvenirs éternels</span></h2>
-    <p class="section-intro">Quelques moments de notre vie d'église et de communion fraternelle.</p>
-
-    <div class="gallery-grid" id="galleryGrid">
       <img src="culte-dimanche11.jpg" alt="Vie de l'église">
       <img src="culte-dimanche12.jpg" alt="Vie de l'église">
       <img src="culte-dimanche13.jpg" alt="Vie de l'église">
@@ -333,6 +330,11 @@
         <p>💬 +90 531 507 32 06</p>
         <p>📍 Fatih / Istanbul</p>
       </div>
+    </div>
+
+    <div class="footer-qr">
+      <img src="qr-code-site.png" alt="Code QR vers le site du Tabernacle of His Mercy" class="qr-code-img">
+      <p>Scannez pour visiter le site</p>
     </div>
 
     <div class="footer-bottom">

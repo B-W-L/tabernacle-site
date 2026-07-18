@@ -38,7 +38,7 @@ body[data-theme="light"] {
   --gold: #b8863f;
   --nav-bg: rgba(245, 247, 252, 0.4);
   --on-dark-text: #dcdfe8; /* remplace le blanc pur pour les textes sur fond bleu (boutons) en thème clair */
-  --pillar-overlay-rgb: 260, 260, 260; /* teinte du voile sur les cartes photo : blanc en thème clair */
+  --pillar-overlay-rgb: 255, 255, 255; /* teinte du voile sur les cartes photo : blanc en thème clair */
 }
 
 /* En thème clair, le texte des boutons bleus devient gris clair plutôt que blanc pur. */
@@ -70,7 +70,7 @@ body {
   background-image: url('eglise.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: clamp(125%, 70vw, 1000px);
+  background-size: clamp(260px, 70vw, 1000px);
   background-attachment: fixed;
   color: var(--text-main);
   font-family: var(--font-body);
@@ -320,9 +320,9 @@ body[data-theme="light"] .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg,
-    rgba(var(--pillar-overlay-rgb), 0.7) 0%,
-    rgba(var(--pillar-overlay-rgb), 0.7) 55%,
-    rgba(var(--pillar-overlay-rgb), 0.7) 100%);
+    rgba(var(--pillar-overlay-rgb), 0.18) 0%,
+    rgba(var(--pillar-overlay-rgb), 0.32) 55%,
+    rgba(var(--pillar-overlay-rgb), 0.55) 100%);
   z-index: 1;
   transition: background 0.4s ease;
 }
@@ -499,6 +499,26 @@ body[data-theme="light"] .hero-overlay {
 .footer-col h4 { font-size: 0.9rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
 .footer-col a, .footer-col p { display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.6rem; }
 .footer-col a:hover { color: var(--blue-light); }
+
+.footer-qr {
+  max-width: 1300px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 2rem;
+}
+.qr-code-img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 0.6rem;
+  padding: 8px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+}
+.footer-qr p {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
 
 .footer-bottom {
   max-width: 1300px;
