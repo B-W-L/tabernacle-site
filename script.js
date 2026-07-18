@@ -159,36 +159,4 @@ donationWhatsappBtn?.addEventListener('click', () => {
   }
   const message = encodeURIComponent(`Bonjour, je souhaite faire un don pour : ${type}.`);
   window.open(`https://wa.me/905315073206?text=${message}`, '_blank');
-  trackClic('clic_whatsapp_don');
-});
-
-// ===========================
-// SUIVI GOOGLE ANALYTICS - CLICS IMPORTANTS
-// (menu Contact, icônes WhatsApp / YouTube / TikTok / téléphone)
-// ===========================
-function trackClic(nomEvenement, details = {}) {
-  if (typeof gtag === 'function') {
-    gtag('event', nomEvenement, details);
-  }
-}
-
-document.addEventListener('click', (e) => {
-  const lien = e.target.closest('a');
-  if (!lien) return;
-
-  if (lien.getAttribute('href') === '#contact') {
-    trackClic('clic_menu_contact');
-  }
-  if (lien.classList.contains('icon-whatsapp')) {
-    trackClic('clic_whatsapp');
-  }
-  if (lien.classList.contains('icon-youtube')) {
-    trackClic('clic_youtube');
-  }
-  if (lien.classList.contains('icon-tiktok')) {
-    trackClic('clic_tiktok');
-  }
-  if (lien.classList.contains('icon-phone')) {
-    trackClic('clic_telephone');
-  }
 });
