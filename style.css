@@ -516,8 +516,11 @@ body[data-theme="light"] .hero-overlay {
   .schedule-single { flex-direction: column; text-align: center; }
 
   /* Le logo déborde du bandeau exprès (voir .logo-img) : sur écran plus
-     étroit on réduit sa hauteur pour qu'il n'écrase pas le reste du header. */
-  .logo-img { height: 96px; }
+     étroit on réduit sa hauteur pour qu'il n'écrase pas le reste du header.
+     Ciblé uniquement sur le logo du menu (.logo .logo-img) pour ne pas
+     toucher au logo du pied de page (.footer-logo), qui doit garder ses
+     proportions (largeur 100% / hauteur automatique). */
+  .logo .logo-img { height: 96px; }
 }
 
 @media (max-width: 600px) {
@@ -527,7 +530,7 @@ body[data-theme="light"] .hero-overlay {
   .footer-grid { grid-template-columns: 1fr; }
 
   .navbar { min-height: 54px; }
-  .logo-img { height: 68px; }
+  .logo .logo-img { height: 68px; }
   .nav-links { gap: 0.4rem 0.6rem; }
   .nav-links a { font-size: 0.62rem; }
 }
