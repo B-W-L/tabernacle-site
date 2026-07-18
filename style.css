@@ -289,6 +289,7 @@ body[data-theme="light"] .hero-overlay {
   overflow: hidden;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   min-height: 380px;
   display: flex;
   flex-direction: column;
@@ -297,10 +298,14 @@ body[data-theme="light"] .hero-overlay {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(6, 13, 31, 0.55) 0%, rgba(6, 13, 31, 0.78) 55%, rgba(6, 13, 31, 0.92) 100%);
+  background: linear-gradient(180deg, rgba(6, 13, 31, 0.18) 0%, rgba(6, 13, 31, 0.32) 55%, rgba(6, 13, 31, 0.55) 100%);
   z-index: 1;
 }
-.pillar-card > * { position: relative; z-index: 2; }
+.pillar-card > * {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);
+}
 .pillar-card--vision { background-image: url("hoffman.jpg"); }
 .pillar-card--mission { background-image: url("prophete.jpg"); }
 .pillar-card--valeurs { background-image: url("nuee.jpg"); }
