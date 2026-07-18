@@ -143,7 +143,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  height: 100px;
+  height: 100px; 
   width: auto;
   max-width: none;
   z-index: 5;
@@ -522,6 +522,7 @@ body[data-theme="light"] .hero-overlay {
    =========================== */
 @media (max-width: 900px) {
   .burger { display: none; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .navbar {
     flex-wrap: wrap;
     height: auto;
@@ -675,3 +676,13 @@ body[data-theme="light"] .hero-overlay {
 .social-icons a { color: var(--text-muted); transition: border-color 0.2s, color 0.2s; }
 .social-icons a:hover { color: var(--gold); }
 .social-icons a svg { display: block; }
+
+.qr-code-img {
+  width: clamp(150px, 18vw, 220px);
+  height: clamp(150px, 18vw, 220px);
+  margin: 0 auto 0.6rem;
+  padding: 8px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+}
