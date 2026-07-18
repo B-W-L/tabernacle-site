@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!-- Site conçu et développé par BWL Diffusion -->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabernacle of His Mercy — Istanbul</title>
+  <meta name="author" content="BWL Diffusion">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ===== STATISTIQUES DE VISITE (Google Analytics) =====
+       Les statistiques (nombre de visiteurs, pages vues...) apparaissent
+       sur analytics.google.com, visibles par vous seul. Ça ne fonctionne
+       qu'une fois le site en ligne sur une vraie adresse (pas en ouvrant
+       juste le fichier sur votre ordinateur). -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T866S1BHJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T866S1BHJV');
+  </script>
+</head>
+<body data-theme="dark">
+
+  <!-- ===== NAVIGATION (1 ligne fixe : logo + menu ensemble) ===== -->
+  <header id="header">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="logo-tabernacle.png" alt="Tabernacle of His Mercy" class="logo-img">
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#pasteur">Pasteur</a></li>
+        <li><a href="#culte">Culte</a></li>
+        <li><a href="#photos-culte">Photos</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Changer de thème">☀️</button>
+        <button class="burger" id="burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== 1. ACCUEIL / HERO ===== -->
+  <section id="accueil" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Bienvenue au</p>
+      <h1>Tabernacle <span class="accent">of His Mercy</span></h1>
+      <p class="hero-text">Une assemblée chrétienne à Istanbul, attachée à la Parole de Dieu et au Message de l'heure, préparant l'Épouse de Christ pour Son retour.</p>
+
+      <div class="countdown" id="countdown">
+        Prochain culte dans : <span id="countdown-timer">--:--:--</span>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#apropos" class="btn btn-primary">Découvrir →</a>
+        <a href="#culte" class="btn btn-secondary">Nous rendre visite</a>
+      </div>
+    </div>
+    <div class="scroll-cue">⌄</div>
+  </section>
+
+  <!-- ===== 2. À PROPOS ===== -->
+  <section id="apropos" class="section">
+    <p class="eyebrow">À propos</p>
+    <h2>Une église, une <span class="accent">mission</span>, un <span class="accent">impact</span></h2>
+    <p class="section-intro">Tabernacle of His Mercy (Istanbul) est une assemblée chrétienne attachée à la restauration de la foi apostolique telle qu'enseignée dans les Saintes Écritures et révélée en cette fin des temps à travers le ministère du prophète William Marrion Branham. Située à Istanbul, notre église accueille des croyants de différentes nationalités désireux d'adorer Dieu en Esprit et en Vérité, de grandir dans Sa Parole et de préparer l'Épouse de Christ pour Son retour.</p>
+
+    <div class="pillars-grid">
+      <div class="pillar-card pillar-card--vision">
+        <div class="pillar-icon">👁</div>
+        <h3>Notre vision</h3>
+        <p>Préparer une Épouse sanctifiée pour le retour de Jésus-Christ en proclamant le Message de l'heure à toutes les nations.</p>
+      </div>
+      <div class="pillar-card pillar-card--mission">
+        <div class="pillar-icon">✝</div>
+        <h3>Notre mission</h3>
+        <p>Enseigner la Parole révélée, conduire les âmes à Christ et former des disciples vivant selon toute la Bible.</p>
+      </div>
+      <div class="pillar-card pillar-card--valeurs">
+        <div class="pillar-icon">❤</div>
+        <h3>Nos valeurs</h3>
+        <ul>
+          <li>La Parole de Dieu comme autorité absolue</li>
+          <li>La Foi apostolique</li>
+          <li>La Sainteté</li>
+          <li>L'Amour fraternel</li>
+          <li>La Communion fraternelle</li>
+          <li>La Prière</li>
+          <li>L'Évangélisation</li>
+        </ul>
+      </div>
+    </div>
+
+    <blockquote class="bible-quote">
+      « Car là où deux ou trois sont réunis en mon nom, je suis au milieu d'eux. »
+      Matthieu 18:20
+    </blockquote>
+  </section>
+
+  <!-- ===== 3. LE PASTEUR ===== -->
+  <section id="pasteur" class="section section-alt">
+    <div class="pastor-grid">
+      <div class="pastor-text">
+        <p class="eyebrow">Le Pasteur</p>
+        <h2>Un leader, un <span class="accent">guide</span>, un <span class="accent">serviteur</span></h2>
+        <p>Le Pasteur Moïse Muamba conduit le Tabernacle of His Mercy (Istanbul) avec un profond attachement à la Parole de Dieu et au Message de l'heure. Son ministère est consacré à l'enseignement fidèle des Écritures, à l'édification des croyants et à l'accompagnement spirituel de chacun afin de marcher dans la volonté parfaite de Dieu.</p>
+        <p class="pastor-signature">Pasteur Moïse Muamba</p>
+
+        <blockquote class="pastor-quote">
+          « Notre désir est de voir chaque croyant grandir dans la connaissance de Jésus-Christ, marcher selon toute la Parole de Dieu et être prêt pour Son glorieux retour. Que le Seigneur vous bénisse abondamment et vous conduise dans toute la Vérité. »
+          <span>— Pasteur Moïse Muamba</span>
+        </blockquote>
+      </div>
+      <div class="pastor-image">
+        <img src="pasteur.jpg" alt="Pasteur Moïse Muamba">
+      </div>
+    </div>
+
+    <div class="faith-block">
+      <h3>Notre confession de foi</h3>
+      <ul class="faith-list">
+        <li>Nous croyons que la Bible est la Parole inspirée et infaillible de Dieu.</li>
+        <li>Nous croyons que Jésus-Christ est le même hier, aujourd'hui et éternellement.</li>
+        <li>Nous croyons au baptême d'eau au Nom du Seigneur Jésus-Christ.</li>
+        <li>Nous croyons au baptême du Saint-Esprit.</li>
+        <li>Nous croyons que Dieu a envoyé Son prophète William Marrion Branham pour restaurer la foi apostolique en cette fin des temps.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 4. CULTE ===== -->
+  <section id="culte" class="section">
+    <p class="eyebrow">Notre culte</p>
+    <h2>Un rendez-vous qui <span class="accent">nourrit l'âme</span></h2>
+    <p class="section-intro">Chaque dimanche, nous nous réunissons pour adorer Dieu, recevoir Sa Parole et grandir ensemble dans Sa présence.</p>
+
+    <div class="schedule-single">
+      <div class="schedule-icon">🗓</div>
+      <div>
+        <h3>Dimanche</h3>
+        <p class="schedule-time">11h00</p>
+        <p class="schedule-note">Soyons à l'heure — venez quelques minutes en avance pour vous préparer dans la prière.</p>
+      </div>
+    </div>
+
+    <div class="visitor-info">
+  <h3>Comment nous trouver</h3>
+  <p><strong>🚇 Accès :</strong> Niveau -1 de l'hôtel, à 2 min à pied de l'arrêt tramway Pazartekke</p>
+  <p class="visitor-note">Adresse complète et coordonnées disponibles dans la section <a href="#contact">Contact</a> en bas de page.</p>
+</div>
+  </section>
+
+  <!-- ===== 5. PHOTOS DES CULTES ===== -->
+  <section id="photos-culte" class="section section-alt">
+    <p class="eyebrow">Nos cultes</p>
+    <h2>Des moments d'adoration <span class="accent">en images</span></h2>
+    <p class="section-intro">Quelques instants captés durant nos cultes du dimanche.</p>
+
+    <div class="gallery-grid">
+      <img src="culte-dimanche.jpg" alt="Culte du dimanche">
+      <img src="culte-dimanche0.jpg" alt="Culte du dimanche">
+      <img src="culte-dimanche1.jpg" alt="Culte du dimanche">
+      <img src="culte-dimanche2.jpg" alt="Culte du dimanche">
+      <img src="culte-dimanche3.jpg" alt="Culte du dimanche">
+      <img src="culte-dimanche4.jpg" alt="Culte du dimanche">
+      <img src="culte-dimanche5.jpg" alt="Culte du dimanche">
+      <img src="culte-dimanche6.jpg" alt="Culte du dimanche">
+      <img src="culte-dimanche7.jpg" alt="Culte du dimanche">
+      <img src="culte-dimanche8.jpg" alt="Culte du dimanche">
+      <img src="culte-dimanche9.jpg" alt="Culte du dimanche">
+      <img src="culte-dimanche10.jpg" alt="Culte du dimanche">
+    </div>
+
+    <h3 class="prayer-title">Moments de prière</h3>
+    <div class="gallery-grid prayer-grid">
+      <img src="priere.jpg" alt="Moment de prière">
+      <img src="priere0.jpg" alt="Moment de prière">
+      <img src="priere1.jpg" alt="Moment de prière">
+    </div>
+  </section>
+
+  <!-- ===== 6. GALERIE ===== -->
+  <section id="galerie" class="section">
+    <p class="eyebrow">Galerie</p>
+    <h2>Des instants précieux, des <span class="accent">souvenirs éternels</span></h2>
+    <p class="section-intro">Quelques moments de notre vie d'église et de communion fraternelle.</p>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <img src="culte-dimanche11.jpg" alt="Vie de l'église">
+      <img src="culte-dimanche12.jpg" alt="Vie de l'église">
+      <img src="culte-dimanche13.jpg" alt="Vie de l'église">
+      <img src="culte-dimanche14.jpg" alt="Vie de l'église">
+      <img src="culte-dimanche15.jpg" alt="Vie de l'église">
+      <img src="culte-dimanche16.jpg" alt="Vie de l'église">
+      <img src="culte-dimanche17.jpg" alt="Vie de l'église">
+      <img src="culte-dimanche18.jpg" alt="Vie de l'église">
+      <img src="culte-dimanche19.jpg" alt="Vie de l'église">
+      <img src="culte-dimanche20.jpg" alt="Vie de l'église">
+      <img src="culte-dimanche21.jpg" alt="Vie de l'église">
+      <img src="culte-dimanche22.jpg" alt="Vie de l'église">
+    </div>
+
+    <button class="btn btn-outline" id="loadMoreGallery">Voir plus de photos →</button>
+
+    <blockquote class="bible-quote small">
+      « Je suis dans la joie quand on me dit : Allons à la maison de l'Éternel. »
+      Psaume 122:1
+    </blockquote>
+  </section>
+
+  <!-- ===== 7. TÉMOIGNAGES ===== -->
+  <section id="temoignages" class="section section-alt">
+    <p class="eyebrow">Témoignages</p>
+    <h2>Des vies transformées, des cœurs <span class="accent">restaurés</span></h2>
+    <div class="testimonial-empty">
+      <p>Les témoignages seront bientôt partagés ici. Revenez prochainement.</p>
+    </div>
+  </section>
+
+  <!-- ===== 8. CONTACT ===== -->
+  <section id="contact" class="section">
+  <p class="eyebrow">Nous contacter</p>
+  <h2>Nous sommes là pour <span class="accent">vous</span></h2>
+  <p class="section-intro">Une question, une prière ou une visite ? N'hésitez pas à nous contacter.</p>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p><span class="c-icon">📍</span> <strong>Adresse :</strong> Topkapi Inter Istanbul Hotel, Topkapı Cd. No: 8, 34093 Fatih / Istanbul</p>
+
+      <div class="social-icons contact-socials">
+  <a href="tel:+905315073206" aria-label="Téléphone" class="icon-phone">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+  </a>
+  <a href="https://wa.me/905315073206" target="_blank" rel="noreferrer" aria-label="WhatsApp" class="icon-whatsapp">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="#25D366"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z"/><path d="M12 2C6.48 2 2 6.48 2 12c0 1.86.5 3.6 1.38 5.09L2 22l5.03-1.34A9.96 9.96 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.2a8.17 8.17 0 01-4.17-1.15l-.3-.18-3.1.83.83-3.03-.2-.31A8.18 8.18 0 013.8 12c0-4.52 3.68-8.2 8.2-8.2s8.2 3.68 8.2 8.2-3.68 8.2-8.2 8.2z"/></svg>
+  </a>
+  <a href="https://youtube.com/@tabernacle_of_his_mercy" target="_blank" rel="noreferrer" aria-label="YouTube" class="icon-youtube">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="#FF0000" fill-rule="evenodd"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.12C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.386.521A2.994 2.994 0 0 0 .502 6.186 31.26 31.26 0 0 0 0 12a31.26 31.26 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.112 2.12c1.881.521 9.386.521 9.386.521s7.505 0 9.386-.521a2.994 2.994 0 0 0 2.112-2.12A31.26 31.26 0 0 0 24 12a31.26 31.26 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12 9.75 15.568z"/></svg>
+  </a>
+  <a href="https://www.tiktok.com/@tab_of_his_mercy" target="_blank" rel="noreferrer" aria-label="TikTok" class="icon-tiktok">
+    <svg viewBox="0 0 24 24" width="26" height="26">
+      <path transform="translate(-0.6,0.6)" fill="#25F4EE" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+      <path transform="translate(0.6,-0.6)" fill="#FE2C55" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+      <path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+    </svg>
+  </a>
+</div>
+    </div>
+
+    <div class="contact-map">
+      <iframe
+        class="map-embed"
+        src="https://www.google.com/maps?q=Topkapi+Inter+Istanbul+Hotel+Topkapi+Cd+No+8+34093+Fatih+Istanbul&output=embed"
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <form class="contact-form" id="contactForm">
+    <input type="text" placeholder="Votre nom" required>
+    <input type="email" placeholder="Votre email" required>
+    <select>
+      <option>Demande générale</option>
+      <option>Demande de prière</option>
+      <option>Première visite</option>
+    </select>
+    <textarea placeholder="Votre message" rows="5" required></textarea>
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+  </form>
+
+  <button class="btn btn-outline" id="donateBtn">Faire un don →</button>
+</section>
+
+<!-- ===== VOLET / MODALE DONS ===== -->
+<div class="modal-overlay" id="donationModal">
+  <div class="modal-box">
+    <button class="modal-close" id="closeModal">✕</button>
+    <h3>Faire un don</h3>
+    <p class="modal-text">Choisissez le type de don que vous souhaitez faire :</p>
+
+    <select id="donationType" class="donation-select">
+      <option value="">— Sélectionnez un type de don —</option>
+      <option value="Location de la salle">Location de la salle</option>
+      <option value="Aide aux nécessiteux">Aide aux nécessiteux</option>
+      <option value="Fonds général de l'église">Fonds général de l'église</option>
+      <option value="Autre">Autre</option>
+    </select>
+
+    <div class="modal-details">
+      <p><strong>Titulaire du compte :</strong> Emmanuel Ntumba Ntalaja</p>
+      <p><strong>IBAN :</strong> TR42 0020 6001 2904 9217 7700 01</p>
+      <p><strong>Banque :</strong> Türkiye İş Bankası</p>
+    </div>
+
+    <button class="btn btn-primary donation-whatsapp-btn" id="donationWhatsappBtn">
+      Contacter via WhatsApp →
+    </button>
+  </div>
+</div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo-tabernacle.png" alt="Tabernacle of His Mercy" class="logo-img footer-logo">
+        <p>Préparer l'Épouse pour le retour de Christ.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Liens rapides</h4>
+        <a href="#accueil">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#pasteur">Pasteur</a>
+        <a href="#culte">Culte</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Notre culte</h4>
+        <p>Dimanche — 11h00</p>
+        <p>Topkapi Inter Istanbul Hotel</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>💬 +90 531 507 32 06</p>
+        <p>📍 Fatih / Istanbul</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tabernacle of His Mercy — Tous droits réservés</p>
+      <p class="footer-credit">&copy; Design BWL Diffusion</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

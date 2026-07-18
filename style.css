@@ -1,162 +1,594 @@
-// ===========================
-// BASCULE THÈME SOMBRE / CLAIR
-// ===========================
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
+/* ===========================
+   IMPORT POLICES
+   =========================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
-themeToggle.addEventListener('click', () => {
-  const isLight = body.getAttribute('data-theme') === 'light';
-  body.setAttribute('data-theme', isLight ? 'dark' : 'light');
-  themeToggle.textContent = isLight ? '☀️' : '🌙';
-});
+/* ===========================
+   VARIABLES - THEME SOMBRE (par défaut)
+   =========================== */
+:root {
+  --bg: #060d1f;
+  --bg-alt: rgba(10, 21, 48, 0.82); /* bandes bleu foncé, légèrement transparentes */
+  --card-bg: rgba(15, 28, 61, 0.75); /* légèrement transparent pour laisser deviner le logo en fond */
+  --card-border: rgba(255, 255, 255, 0.12);
+  --text-main: #f2f4fa;
+  --text-muted: #a9b3cc;
+  --blue: #2b52c4;
+  --blue-light: #6f92e8;
+  --gold: #d4af60;
+  --nav-bg: rgba(6, 13, 31, 0.4);
 
-// ===========================
-// MENU BURGER (mobile)
-// ===========================
-const burger = document.getElementById('burger');
-const navLinks = document.getElementById('navLinks');
-
-burger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  burger.classList.toggle('active');
-});
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    burger.classList.remove('active');
-  });
-});
-
-// ===========================
-// COUNTDOWN PROCHAIN CULTE (Dimanche 11h00)
-// ===========================
-function getNextCulteDate() {
-  const now = new Date();
-  const date = new Date(now);
-  const diffJours = (0 - now.getDay() + 7) % 7; // 0 = dimanche
-  date.setDate(now.getDate() + diffJours);
-  date.setHours(11, 0, 0, 0);
-  if (date <= now) date.setDate(date.getDate() + 7);
-  return date;
+  --font-title: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
 }
 
-function updateCountdown() {
-  const target = getNextCulteDate();
-  const now = new Date();
-  const diff = target - now;
-
-  const jours = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const heures = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const secondes = Math.floor((diff / 1000) % 60);
-
-  let texte = '';
-  if (jours > 0) texte += `${jours}j `;
-  texte += `${String(heures).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secondes).padStart(2, '0')}`;
-
-  document.getElementById('countdown-timer').textContent = texte;
+/* ===========================
+   VARIABLES - THEME CLAIR
+   =========================== */
+body[data-theme="light"] {
+  --bg: #f5f7fc;
+  --bg-alt: rgba(234, 238, 248, 0.82); /* bandes bleu foncé, légèrement transparentes */
+  --card-bg: rgba(255, 255, 255, 0.75); /* légèrement transparent pour laisser deviner le logo en fond */
+  --card-border: rgba(43, 82, 196, 0.15);
+  --text-main: #101833;
+  --text-muted: #4c5876;
+  --blue: #1e3fa0;
+  --blue-light: #2b52c4;
+  --gold: #b8863f;
+  --nav-bg: rgba(245, 247, 252, 0.4);
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+/* ===========================
+   RESET
+   =========================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-// ===========================
-// SCROLL FLUIDE (ancres)
-// ===========================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const targetId = this.getAttribute('href');
-    const target = document.querySelector(targetId);
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
+body {
+  background-color: var(--bg);
+  background-image: url('eglise.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1000px;
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
 
-// ===========================
-// GALERIE - VOIR PLUS DE PHOTOS
-// ===========================
-const galleryGrid = document.getElementById('galleryGrid');
-const loadMoreBtn = document.getElementById('loadMoreGallery');
-let nextImageIndex = 23;
-const lastImageIndex = 40;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  opacity: 0.7;
+  z-index: -1;
+  pointer-events: none;
+}
 
-loadMoreBtn?.addEventListener('click', () => {
-  for (let i = 0; i < 8 && nextImageIndex <= lastImageIndex; i++) {
-    const img = document.createElement('img');
-    img.src = `images/culte-dimanche${nextImageIndex}.jpg`;
-    img.alt = "Vie de l'église";
-    galleryGrid.appendChild(img);
-    nextImageIndex++;
+h1, h2, h3, h4 { font-family: var(--font-title); font-weight: 700; line-height: 1.25; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: var(--font-body); border: none; background: none; }
+
+.accent { color: var(--blue-light); font-style: italic; }
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* ===========================
+   NAVIGATION (1 ligne fixe, translucide, avec le logo dedans)
+   =========================== */
+#header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--card-border);
+  overflow: visible;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0 4%;
+  max-width: 1600px;
+  margin: 0 auto;
+  height: 92px;
+  overflow: visible;
+}
+
+.logo {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: visible;
+}
+
+.logo-img {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 150px; /* le logo dépasse volontairement du bandeau, sans recouvrir le menu */
+  width: auto;
+  max-width: none;
+  z-index: 5;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue-light); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.theme-toggle {
+  font-size: 1.7rem;
+  background: none;
+  border: none;
+  width: auto;
+  height: auto;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s;
+}
+.theme-toggle:hover { transform: rotate(20deg) scale(1.1); }
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+}
+.burger span { width: 24px; height: 2px; background: var(--text-main); }
+
+/* ===========================
+   BOUTONS
+   =========================== */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+}
+
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  margin: 2rem auto 0;
+  display: block;
+  width: fit-content;
+}
+.btn-outline:hover { background: var(--gold); color: var(--bg); }
+
+.btn-donate {
+  background: var(--gold);
+  color: var(--bg);
+  padding: 0.6rem 1.4rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* ===========================
+   HERO
+   =========================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 6% 4rem;
+  position: relative;
+  background: url('culte-dimanche.jpg') center/cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6,13,31,0.45) 0%, rgba(6,13,31,0.7) 100%);
+}
+
+body[data-theme="light"] .hero-overlay {
+  background: linear-gradient(180deg, rgba(245,247,252,0.5) 0%, rgba(245,247,252,0.75) 100%);
+}
+
+.hero-content { max-width: 750px; position: relative; z-index: 1; }
+
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 1.2rem; }
+.hero-text { color: var(--text-muted); font-size: 1.05rem; max-width: 550px; margin: 0 auto 1.5rem; }
+
+.countdown {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 30px;
+  padding: 0.6rem 1.5rem;
+  display: inline-block;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+#countdown-timer { color: var(--gold); font-weight: 700; }
+
+.hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 1.5rem;
+  color: var(--gold);
+  animation: bounce 2s infinite;
+  z-index: 1;
+}
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+/* ===========================
+   SECTIONS GÉNÉRIQUES
+   =========================== */
+.section { padding: 6rem 6%; max-width: 1300px; margin: 0 auto; }
+.section-alt { background: var(--bg-alt); max-width: 100%; }
+.section-alt > * { max-width: 1300px; margin-left: auto; margin-right: auto; }
+
+.section h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: 1rem; max-width: 700px; }
+.section-intro { color: var(--text-muted); max-width: 600px; margin-bottom: 3rem; }
+
+/* ===========================
+   À PROPOS
+   =========================== */
+.pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+.pillar-card {
+  position: relative;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+.pillar-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 13, 31, 0.55) 0%, rgba(6, 13, 31, 0.78) 55%, rgba(6, 13, 31, 0.92) 100%);
+  z-index: 1;
+}
+.pillar-card > * { position: relative; z-index: 2; }
+.pillar-card--vision { background-image: url("hoffman.jpg"); }
+.pillar-card--mission { background-image: url("prophete.jpg"); }
+.pillar-card--valeurs { background-image: url("nuee.jpg"); }
+.pillar-icon { font-size: 3.4rem; color: var(--gold); margin-bottom: 1.2rem; text-align: center; }
+.pillar-card h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: #fff; }
+.pillar-card p, .pillar-card li { color: rgba(255, 255, 255, 0.88); font-size: 0.9rem; }
+.pillar-card li { margin-bottom: 0.3rem; }
+
+.bible-quote {
+  text-align: center;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--blue-light);
+  max-width: 700px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--card-border);
+}
+.bible-quote.small { font-size: 1.05rem; margin-top: 3rem; }
+
+/* ===========================
+   PASTEUR
+   =========================== */
+.pastor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 3rem; }
+.pastor-text p { color: var(--text-muted); margin-bottom: 1rem; }
+.pastor-signature { font-family: var(--font-title); font-style: italic; color: var(--gold); font-size: 1.1rem; }
+
+.pastor-quote {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+.pastor-quote span { display: block; font-family: var(--font-body); font-style: normal; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.6rem; text-transform: uppercase; }
+
+.pastor-image img { border-radius: 10px; border: 1px solid var(--card-border); }
+
+.faith-block {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+.faith-block h3 { margin-bottom: 1rem; }
+.faith-list li {
+  color: var(--text-muted);
+  padding-left: 1.2rem;
+  position: relative;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+.faith-list li::before { content: "✝"; color: var(--gold); position: absolute; left: 0; }
+
+.social-bar { text-align: center; padding-top: 2rem; border-top: 1px solid var(--card-border); }
+.social-bar p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+.social-icons { display: flex; gap: 1rem; justify-content: center; }
+.social-icons a {
+  width: 54px; height: 54px;
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.social-icons a:hover { transform: translateY(-2px); }
+.social-icons a:hover { border-color: var(--gold); }
+
+/* ===========================
+   CULTE
+   =========================== */
+.schedule-single {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  background: var(--card-bg);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+.schedule-icon { font-size: 2rem; color: var(--gold); }
+.schedule-single h3 { font-size: 1.3rem; }
+.schedule-time { font-size: 2rem; font-family: var(--font-title); color: var(--blue-light); font-weight: 700; }
+.schedule-note { color: var(--text-muted); font-size: 0.9rem; max-width: 500px; }
+
+.visitor-info { padding-top: 1rem; }
+.visitor-info h3 { margin-bottom: 1rem; }
+.visitor-info p { color: var(--text-muted); margin-bottom: 0.8rem; }
+.visitor-info a { color: var(--blue-light); }
+
+.map-placeholder {
+  background: var(--card-bg);
+  border: 1px dashed var(--card-border);
+  border-radius: 8px;
+  height: 220px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 1rem;
+}
+
+/* ===========================
+   PHOTOS DES CULTES / GALERIE
+   =========================== */
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-bottom: 2rem; }
+.gallery-grid img { border-radius: 8px; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--card-border); }
+
+.prayer-title { margin: 3rem 0 1.5rem; font-size: 1.3rem; text-align: center; }
+.prayer-grid { grid-template-columns: repeat(3, 1fr); margin-bottom: 0; }
+
+/* ===========================
+   TÉMOIGNAGES
+   =========================== */
+.testimonial-empty {
+  background: var(--card-bg);
+  border: 1px dashed var(--card-border);
+  border-radius: 10px;
+  padding: 3rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* ===========================
+   CONTACT
+   =========================== */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.contact-info p { margin-bottom: 1rem; color: var(--text-muted); }
+.contact-info a { color: var(--blue-light); }
+.c-icon { margin-right: 0.5rem; }
+
+.contact-form { display: grid; gap: 1rem; max-width: 600px; margin-bottom: 2rem; }
+.contact-form input, .contact-form select, .contact-form textarea {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  color: var(--text-main);
+  font-family: var(--font-body);
+}
+
+.donation-note { color: var(--text-muted); font-size: 0.9rem; }
+.donation-note a { color: var(--gold); }
+
+/* ===========================
+   FOOTER
+   =========================== */
+.footer { background: var(--bg-alt); padding: 4rem 6% 2rem; border-top: 1px solid var(--card-border); }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2rem; max-width: 1300px; margin: 0 auto 3rem; }
+.footer-brand p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* Le logo du footer réutilise .logo-img (positionné en absolute pour le
+   header). Sans parent positionné ici, il faut annuler ce positionnement
+   pour que le logo reste bien dans le footer, en bas à gauche. */
+.footer-logo {
+  position: static;
+  transform: none;
+  width: min(1000px, 100%);
+  height: auto;
+  margin-bottom: 1rem;
+}
+.footer-col h4 { font-size: 0.9rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+.footer-col a, .footer-col p { display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.6rem; }
+.footer-col a:hover { color: var(--blue-light); }
+
+.footer-bottom {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--card-border);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-credit {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  opacity: 0.7;
+}
+
+/* ===========================
+   MENU BURGER MOBILE
+   =========================== */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .burger { display: flex; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--card-border);
   }
-  if (nextImageIndex > lastImageIndex) {
-    loadMoreBtn.style.display = 'none';
-  }
-});
+  .pillars-grid, .gallery-grid, .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .pastor-grid, .contact-grid, .schedule-single { grid-template-columns: 1fr; }
+  .schedule-single { flex-direction: column; text-align: center; }
+}
 
-// ===========================
-// ANIMATION AU DÉFILEMENT
-// ===========================
-const fadeObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      fadeObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
+@media (max-width: 600px) {
+  .pillars-grid, .gallery-grid, .footer-grid { grid-template-columns: 1fr; }
+}
 
-document.querySelectorAll('.section, .pillar-card, .faith-block').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  fadeObserver.observe(el);
-});
+/* ===========================
+   CARTE (iframe)
+   =========================== */
+.contact-map { border-radius: 8px; overflow: hidden; }
+.map-embed {
+  width: 100%;
+  height: 280px;
+  border: none;
+  border-radius: 8px;
+  filter: grayscale(20%);
+}
 
-// ===========================
-// FORMULAIRE DE CONTACT (simulation)
-// ===========================
-const contactForm = document.getElementById('contactForm');
-contactForm?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  alert('Merci pour votre message ! Nous vous répondrons rapidement.');
-  contactForm.reset();
-});
+/* ===========================
+   ICONES CONTACT (sans numéro affiché)
+   =========================== */
+.contact-socials { justify-content: flex-start; margin-top: 1.5rem; }
 
-// ===========================
-// MODALE DONS
-// ===========================
-const donateBtn = document.getElementById('donateBtn');
-const donationModal = document.getElementById('donationModal');
-const closeModal = document.getElementById('closeModal');
+/* ===========================
+   MODALE DONS
+   =========================== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
 
-donateBtn?.addEventListener('click', () => {
-  donationModal.classList.add('open');
-});
+.modal-box {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 2.5rem;
+  max-width: 450px;
+  width: 90%;
+  position: relative;
+}
 
-closeModal?.addEventListener('click', () => {
-  donationModal.classList.remove('open');
-});
+.modal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+.modal-close:hover { color: var(--gold); }
 
-donationModal?.addEventListener('click', (e) => {
-  if (e.target === donationModal) {
-    donationModal.classList.remove('open');
-  }
-});
+.modal-box h3 { margin-bottom: 1rem; }
+.modal-text { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.modal-text a { color: var(--blue-light); }
 
-// Bouton WhatsApp avec message pré-rempli selon le type de don choisi
-const donationWhatsappBtn = document.getElementById('donationWhatsappBtn');
-const donationType = document.getElementById('donationType');
+.modal-details {
+  background: var(--bg-alt);
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+}
+.modal-details p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
 
-donationWhatsappBtn?.addEventListener('click', () => {
-  const type = donationType.value;
-  if (!type) {
-    alert('Merci de sélectionner un type de don avant de continuer.');
-    return;
-  }
-  const message = encodeURIComponent(`Bonjour, je souhaite faire un don pour : ${type}.`);
-  window.open(`https://wa.me/905315073206?text=${message}`, '_blank');
-});
+.donation-select {
+  width: 100%;
+  background: var(--bg-alt);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  margin-bottom: 1rem;
+}
+
+.donation-whatsapp-btn { width: 100%; text-align: center; }
+
+.visitor-note { color: var(--text-muted); font-size: 0.9rem; }
+.visitor-note a { color: var(--blue-light); }
+
+.social-icons a { color: var(--text-muted); transition: border-color 0.2s, color 0.2s; }
+.social-icons a:hover { color: var(--gold); }
+.social-icons a svg { display: block; }
