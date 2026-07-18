@@ -132,7 +132,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
 
 .logo {
   position: relative;
-  height: 100%;
+  height: 125%;
   display: flex;
   align-items: center;
   overflow: visible;
@@ -143,7 +143,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  height: 150px; /* le logo dépasse volontairement du bandeau, sans recouvrir le menu */
+  height: 100px;
   width: auto;
   max-width: none;
   z-index: 5;
