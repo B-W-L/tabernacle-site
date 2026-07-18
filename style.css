@@ -122,7 +122,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  height: 100px;
+  height: 150px; /* le logo dépasse volontairement du bandeau, sans recouvrir le menu */
   width: auto;
   max-width: none;
   z-index: 5;
@@ -503,13 +503,43 @@ body[data-theme="light"] .hero-overlay {
     gap: 1.2rem;
     border-bottom: 1px solid var(--card-border);
   }
-  .pillars-grid, .gallery-grid, .footer-grid { grid-template-columns: repeat(2, 1fr); }
-  .pastor-grid, .contact-grid, .schedule-single { grid-template-columns: 1fr; }
+  .gallery-grid, .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid, .schedule-single { grid-template-columns: 1fr; }
   .schedule-single { flex-direction: column; text-align: center; }
 }
 
 @media (max-width: 600px) {
-  .pillars-grid, .gallery-grid, .footer-grid { grid-template-columns: 1fr; }
+  .gallery-grid, .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* Les cartes "Notre vision / mission / valeurs" et la section Pasteur
+   gardent toujours leur disposition côte à côte (jamais empilées) —
+   elles se réduisent simplement en taille sur petit écran. */
+@media (max-width: 900px) {
+  .pillars-grid { gap: 0.8rem; }
+  .pillar-card { padding: 1.2rem 0.8rem; min-height: 260px; }
+  .pillar-icon { font-size: 2.2rem; margin-bottom: 0.6rem; }
+  .pillar-card h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .pillar-card p, .pillar-card li { font-size: 0.72rem; line-height: 1.3; }
+
+  .pastor-grid { gap: 1rem; align-items: start; }
+}
+
+@media (max-width: 600px) {
+  .pillars-grid { gap: 0.5rem; }
+  .pillar-card { padding: 0.8rem 0.5rem; min-height: 200px; border-radius: 6px; }
+  .pillar-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+  .pillar-card h3 { font-size: 0.78rem; margin-bottom: 0.3rem; }
+  .pillar-card p, .pillar-card li { font-size: 0.62rem; line-height: 1.2; }
+  .pillar-card li { margin-bottom: 0.1rem; }
+
+  .pastor-grid { grid-template-columns: 3fr 2fr; gap: 0.5rem; align-items: start; }
+  .pastor-text h2 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .pastor-text .eyebrow { font-size: 0.65rem; }
+  .pastor-text p { font-size: 0.68rem; line-height: 1.35; margin-bottom: 0.5rem; }
+  .pastor-signature { font-size: 0.68rem; }
+  .pastor-quote { font-size: 0.62rem; padding: 0.6rem; }
+  .pastor-image img { border-radius: 6px; }
 }
 
 /* ===========================
