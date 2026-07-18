@@ -486,23 +486,30 @@ body[data-theme="light"] .hero-overlay {
 }
 
 /* ===========================
-   MENU BURGER MOBILE
+   NAVIGATION MOBILE — le menu (Accueil, Pasteur, Contact...) reste
+   TOUJOURS visible, il ne se cache plus derrière une icône burger.
+   Il passe simplement sur sa propre ligne, sous le logo, en plus petit.
    =========================== */
 @media (max-width: 900px) {
-  .nav-links { display: none; }
-  .burger { display: flex; }
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 100%; left: 0; right: 0;
-    background: var(--nav-bg);
-    backdrop-filter: blur(10px);
-    padding: 1.5rem;
-    gap: 1.2rem;
-    border-bottom: 1px solid var(--card-border);
+  .burger { display: none; }
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 68px;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    row-gap: 0.5rem;
   }
+  .logo { order: 1; }
+  .nav-actions { order: 2; }
+  .nav-links {
+    order: 3;
+    flex: 1 0 100%;
+    justify-content: center;
+    gap: 0.5rem 0.9rem;
+  }
+  .nav-links a { font-size: 0.72rem; }
+
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid, .schedule-single { grid-template-columns: 1fr; }
@@ -510,7 +517,6 @@ body[data-theme="light"] .hero-overlay {
 
   /* Le logo déborde du bandeau exprès (voir .logo-img) : sur écran plus
      étroit on réduit sa hauteur pour qu'il n'écrase pas le reste du header. */
-  .navbar { height: 68px; }
   .logo-img { height: 96px; }
 }
 
@@ -520,8 +526,10 @@ body[data-theme="light"] .hero-overlay {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
   .footer-grid { grid-template-columns: 1fr; }
 
-  .navbar { height: 54px; }
+  .navbar { min-height: 54px; }
   .logo-img { height: 68px; }
+  .nav-links { gap: 0.4rem 0.6rem; }
+  .nav-links a { font-size: 0.62rem; }
 }
 
 /* Les cartes "Notre vision / mission / valeurs" et la section Pasteur
