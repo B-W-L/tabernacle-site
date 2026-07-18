@@ -1,0 +1,162 @@
+// ===========================
+// BASCULE THÈME SOMBRE / CLAIR
+// ===========================
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+themeToggle.addEventListener('click', () => {
+  const isLight = body.getAttribute('data-theme') === 'light';
+  body.setAttribute('data-theme', isLight ? 'dark' : 'light');
+  themeToggle.textContent = isLight ? '☀️' : '🌙';
+});
+
+// ===========================
+// MENU BURGER (mobile)
+// ===========================
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+
+burger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  burger.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.classList.remove('active');
+  });
+});
+
+// ===========================
+// COUNTDOWN PROCHAIN CULTE (Dimanche 11h00)
+// ===========================
+function getNextCulteDate() {
+  const now = new Date();
+  const date = new Date(now);
+  const diffJours = (0 - now.getDay() + 7) % 7; // 0 = dimanche
+  date.setDate(now.getDate() + diffJours);
+  date.setHours(11, 0, 0, 0);
+  if (date <= now) date.setDate(date.getDate() + 7);
+  return date;
+}
+
+function updateCountdown() {
+  const target = getNextCulteDate();
+  const now = new Date();
+  const diff = target - now;
+
+  const jours = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const heures = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const secondes = Math.floor((diff / 1000) % 60);
+
+  let texte = '';
+  if (jours > 0) texte += `${jours}j `;
+  texte += `${String(heures).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secondes).padStart(2, '0')}`;
+
+  document.getElementById('countdown-timer').textContent = texte;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ===========================
+// SCROLL FLUIDE (ancres)
+// ===========================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href');
+    const target = document.querySelector(targetId);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ===========================
+// GALERIE - VOIR PLUS DE PHOTOS
+// ===========================
+const galleryGrid = document.getElementById('galleryGrid');
+const loadMoreBtn = document.getElementById('loadMoreGallery');
+let nextImageIndex = 23;
+const lastImageIndex = 40;
+
+loadMoreBtn?.addEventListener('click', () => {
+  for (let i = 0; i < 8 && nextImageIndex <= lastImageIndex; i++) {
+    const img = document.createElement('img');
+    img.src = `images/culte-dimanche${nextImageIndex}.jpg`;
+    img.alt = "Vie de l'église";
+    galleryGrid.appendChild(img);
+    nextImageIndex++;
+  }
+  if (nextImageIndex > lastImageIndex) {
+    loadMoreBtn.style.display = 'none';
+  }
+});
+
+// ===========================
+// ANIMATION AU DÉFILEMENT
+// ===========================
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.section, .pillar-card, .faith-block').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  fadeObserver.observe(el);
+});
+
+// ===========================
+// FORMULAIRE DE CONTACT (simulation)
+// ===========================
+const contactForm = document.getElementById('contactForm');
+contactForm?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Merci pour votre message ! Nous vous répondrons rapidement.');
+  contactForm.reset();
+});
+
+// ===========================
+// MODALE DONS
+// ===========================
+const donateBtn = document.getElementById('donateBtn');
+const donationModal = document.getElementById('donationModal');
+const closeModal = document.getElementById('closeModal');
+
+donateBtn?.addEventListener('click', () => {
+  donationModal.classList.add('open');
+});
+
+closeModal?.addEventListener('click', () => {
+  donationModal.classList.remove('open');
+});
+
+donationModal?.addEventListener('click', (e) => {
+  if (e.target === donationModal) {
+    donationModal.classList.remove('open');
+  }
+});
+
+// Bouton WhatsApp avec message pré-rempli selon le type de don choisi
+const donationWhatsappBtn = document.getElementById('donationWhatsappBtn');
+const donationType = document.getElementById('donationType');
+
+donationWhatsappBtn?.addEventListener('click', () => {
+  const type = donationType.value;
+  if (!type) {
+    alert('Merci de sélectionner un type de don avant de continuer.');
+    return;
+  }
+  const message = encodeURIComponent(`Bonjour, je souhaite faire un don pour : ${type}.`);
+  window.open(`https://wa.me/905315073206?text=${message}`, '_blank');
+});
