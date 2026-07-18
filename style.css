@@ -61,7 +61,7 @@ body {
   background-image: url('eglise.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 1000px;
+  background-size: clamp(260px, 70vw, 1000px);
   background-attachment: fixed;
   color: var(--text-main);
   font-family: var(--font-body);
