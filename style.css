@@ -599,14 +599,18 @@ body[data-theme="light"] .hero-overlay {
 /* ===========================
    CARTE (iframe)
    =========================== */
+.contact-video-map { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; align-items: start; }
 .contact-map { border-radius: 8px; overflow: hidden; }
+.contact-video { border-radius: 8px; overflow: hidden; }
 .map-embed {
   width: 100%;
-  height: 280px;
+  aspect-ratio: 4 / 3;
+  height: auto;
   border: none;
   border-radius: 8px;
   filter: grayscale(20%);
 }
+video.map-embed { display: block; object-fit: cover; }
 
 /* ===========================
    ICONES CONTACT (sans numéro affiché)
